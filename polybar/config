@@ -1,0 +1,192 @@
+[colors]
+uline1 = #908d88
+uline2 = #a46649
+uline3 = #314141
+uline4 = #FF8D8D
+fg1 = #afafaf
+bg1 = C8000000
+
+
+
+[bar/bar]
+width = 100%
+height = 32
+background = ${colors.bg1}
+foreground = ${colors.fg1}
+
+font-0 = "Iosevka:size=9;4"
+font-1 = "SegoeUI:size=9;4"
+font-2 = "FiraMono:size=9;4"
+font-3 = "FontAwesome:size=9;4"
+font-4 = "Font Awesome 5 Free:size=9;4"
+font-5 = "Font Awesome 5 Brands:size=9;4"
+font-6 = "SegoeUISymbol:size=10;4"
+font-7 = "Font Awesome 5 Pro Regular:size=9;4"
+dpi-x = 137
+dpi-y = 137
+
+border-bottom-size = 3
+border-top-size = 2
+border-left-size = 3
+border-right-size = 3
+border-color = ${colors.bg1}
+bottom = false
+underline-size = 2
+
+modules-left = rofi i3
+modules-center = date
+modules-right = network separator audio separator mic separator battery-combined-udev separator keylayout
+tray-position = none
+
+
+
+[module/rofi]
+type = custom/text
+content = "   "
+click-left = /home/rensenware/.config/scripts/rofi-menu-launch.sh
+
+
+
+[module/i3]
+type = internal/i3
+format = "<label-state> <label-mode>"
+
+label-separator = " "
+label-mode-padding = 0
+label-focused-underline = #d677ff
+label-focused-foreground = #d677ff
+label-focused-padding-right = 1
+label-unfocused-underline = #a0a0a0
+label-unfocused-foreground = #a0a0a0
+label-unfocused-padding-right = 1
+label-visible-underline = #9184b5
+label-visible-foreground = #9184b5
+label-visible-padding-right = 1
+label-urgent-underline = #ed7070
+label-urgent-foreground = #ed7070
+label-urgent-padding-right = 1
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+wrapping-scroll = false
+
+
+
+[module/audio]
+type = internal/pulseaudio
+interval = 5
+
+format-volume = "  %{T6} 🔊%{T2}  <label-volume>"
+format-volume-padding = 0
+format-volume-foreground = #73C4FF
+
+label-volume-padding-right = 0
+label-volume = "%{T2}%percentage:02%%"
+label-volume-padding = 0
+
+label-muted = "%{T2}🔇 00%"
+label-muted-foreground = #73C4FF
+
+scroll-up = pamixer -d 10
+scroll-down = pamixer -i 10
+
+ramp-volume-0 = |---------
+ramp-volume-1 = -|--------
+ramp-volume-2 = --|-------
+ramp-volume-3 = ---|------
+ramp-volume-4 = ----|-----
+ramp-volume-5 = -----|----
+ramp-volume-6 = ------|---
+ramp-volume-7 = -------|--
+ramp-volume-8 = --------|-
+ramp-volume-9 = ---------|
+
+
+
+[module/mic]
+type = custom/script
+exec = /home/rensenware/.config/scripts/mic.sh
+interval = 0.2
+
+scroll-up = pamixer --source 1 -i 5
+scroll-down = pamixer --source 1 -d 5
+click-left = pamixer --source 1 -t
+
+format = <label>
+
+label = "%{T2}%output%"
+label-foreground = #73C4FF
+
+
+
+[module/battery-combined-udev]
+type = custom/script
+exec = /home/rensenware/.config/scripts/battery-combined-udev.sh
+tail = true
+format = <label>
+label = "%output%"
+label-foreground = #b5FF95
+label-font = 2
+
+
+[module/network]
+type = internal/network
+interface = wlp3s0
+interval = 3
+click-left = /home/rensenware/temp.sh &
+
+label-connected-font = 2
+label-disconnected-font = 2
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+format-connected-foreground = #be6f91
+format-disconnected-foreground = #be6f91
+
+label-connected = "%{A1:/home/rensenware/.config/scripts/dmenu-network.sh:}  %essid%%{A}"
+label-disconnected = %{A1:/home/rensenware/.config/scripts/dmenu-network.sh:}Not connected%{A}
+
+
+
+[module/keylayout]
+type = custom/script
+exec = /home/rensenware/.config/scripts/layout.sh
+interval = 1
+
+click-left = /home/rensenware/.config/scripts/keylayout.sh
+
+format =  <label>
+label = "%{T2}%output%%{T-} "
+format-foreground = #fff3af
+
+
+
+[module/date]
+type = internal/date
+interval = 1
+date = "%a %Y-%m-%d"
+time = %H:%M:%S
+label = %date%  %time%
+label-font = 2
+label-foreground = #afafaf
+
+
+
+[module/spotify]
+type = custom/script
+exec = /home/rensenware/.config/scripts/playerstatus.sh
+interval = 1
+
+format = <label>
+format-foreground = #c5b0ff
+
+label = "%output%"
+
+click-left = playerctl -p spotify play-pause
+click-right = playerctl -p spotify next
+click-middle = playerctl -p spotify previous
+
+
+
+[module/separator]
+type = custom/text
+content = "   "
