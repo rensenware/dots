@@ -1,0 +1,19 @@
+bar {
+       i3bar_command i3bar --transparency
+       status_command i3blocks
+       height 32
+       workspace_min_width 40
+       font pango:Segoe UI Regular 9
+       colors {
+               background #00000000
+               statusline #afafaf
+               separator #00000000
+
+               focused_workspace       #afafaf #00000000 #afafaf
+               urgent_workspace        #FF8D8D #00000000 #afafaf
+               inactive_workspace      #00000000 #00000000 #afafaf
+               active_workspace        #00000000 #00000000 #afafaf
+       }
+       bindsym button2 kill
+       bindsym button3 exec --no-startup-id /home/rensenware/.config/scripts/lowestworkspace.sh
+}
