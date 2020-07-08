@@ -1,0 +1,3 @@
+rofi.show-icons: true
+rofi.icon-theme: Papirus Dark
+rofi.theme: /usr/share/rofi/themes/breeze-dark.rasi
