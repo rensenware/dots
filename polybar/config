@@ -4,7 +4,9 @@ uline2 = #a46649
 uline3 = #314141
 uline4 = #FF8D8D
 fg1 = #afafaf
-bg1 = C8000000
+bg1 = #80000000
+;bg1 = #A0000000
+;bg1 = #C8000000
 
 
 
@@ -35,7 +37,7 @@ underline-size = 2
 
 modules-left = rofi i3
 modules-center = date
-modules-right = network separator audio separator mic separator battery-combined-udev separator keylayout
+modules-right = network separator audio separator mic separator battery-combined-udev separator keylayout separator search
 tray-position = none
 
 
@@ -45,7 +47,11 @@ type = custom/text
 content = "   "
 click-left = /home/rensenware/.config/scripts/rofi-menu-launch.sh
 
-
+[module/search]
+type = custom/text
+content = " %{T2}Search%{T1} "
+content-foreground = #ffbc8d
+click-left = /home/rensenware/.config/scripts/rofi-search.sh
 
 [module/i3]
 type = internal/i3
@@ -133,7 +139,6 @@ label-font = 2
 type = internal/network
 interface = wlp3s0
 interval = 3
-click-left = /home/rensenware/temp.sh &
 
 label-connected-font = 2
 label-disconnected-font = 2
@@ -155,7 +160,7 @@ interval = 1
 click-left = /home/rensenware/.config/scripts/keylayout.sh
 
 format =  <label>
-label = "%{T2}%output%%{T-} "
+label = "%{T2}%output%%{T-}"
 format-foreground = #fff3af
 
 
@@ -165,10 +170,10 @@ type = internal/date
 interval = 1
 date = "%a %Y-%m-%d"
 time = %H:%M:%S
-label = %date%  %time%
+;label = %date%  %time%
 label-font = 2
 label-foreground = #afafaf
-
+label = "%{A1:/home/rensenware/.config/scripts/calendar.sh:}%date%  %time%%{A}"
 
 
 [module/spotify]
