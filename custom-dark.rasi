@@ -1,0 +1,141 @@
+/*
+ * breeze-dark.rasi
+ * rofi theme inspired by plasma breeze
+ * MonsieurBedard
+ */
+
+* {
+    /* Base */
+    default-background: rgba(0, 0, 0, 75%); // <- change this for transparency
+    default-foreground: rgba(175, 175, 175, 100%);
+    default-border: rgba(0, 0, 0, 75%);
+    alternative-border: rgba(63, 81, 181, 100%);
+    alternative-background: rgba(50, 56, 65, 80%);
+    invisible: rgba(0, 0, 0, 0%);
+    selection-background: rgba(50, 56, 65, 80%);
+
+    /* Colors */
+    hard-blue: rgba(42, 139, 218, 100%);
+    light-blue: rgba(24, 53, 69, 100%);
+
+    hard-red: rgba(141, 58, 80, 100%);
+    light-red: rgba(77, 31, 37, 100%);
+
+    hard-green: rgba(39, 161, 69, 100%);
+    light-green: rgba(19, 55, 35, 100%);
+
+    /* Universal */
+    background-color: @invisible;
+    text-color: @default-foreground;
+}
+
+#window {
+    background-color: @default-background;
+    border: 0;
+    border-color: @default-border;
+    padding: 7;
+}
+
+#mainbox {
+    border:  0;
+    padding: 0;
+}
+
+#message {
+    border: 1; 
+    border-radius: 3;
+    padding: 5;
+    background-color: @alternative-background;
+    border-color: @alternative-border;
+}
+
+#textbox {
+    background-color: @entry-background;
+}
+
+#listview {
+    fixed-height: 0;
+    spacing: 2;
+    scrollbar: false;
+    padding: 3 0 0;
+}
+
+#element {
+    padding: 5;
+    border: 0;
+    border-radius: 3;
+    border-color: @invisible;
+}
+
+#element.normal.normal {
+    background-color: @invisible;
+    border: 0;
+}
+
+#element.normal.urgent {
+    background-color: @light-red;
+    border: 0;
+}
+
+#element.normal.active {
+    background-color: @light-green;
+    border: 0;
+}
+
+#element.selected.normal {
+    background-color: @selection-background;
+    border: 0;
+    border-color:     @alternative-border;
+}
+
+#element.selected.urgent {
+    background-color: @light-red;
+    border-color:     @hard-red;
+    border: 0;
+}
+
+#element.selected.active {
+    background-color: @light-green;
+    border-color:     @hard-green;
+    border: 0;
+}
+
+#mode-switcher {
+    spacing: 0;
+}
+
+#button {
+    border: 0 0 0 0;
+    border-color: @invisible;
+    padding: 3;
+}
+
+#button.selected {
+    border-color: @hard-blue;
+}
+
+#inputbar {
+    spacing: 0;
+    padding: 1;
+}
+
+#case-indicator {
+    spacing: 0;
+    padding: 3px;
+    background-color: @alternative-background;
+    border-color: @alternative-border;
+    border: 1 1 1 0;
+    border-radius: 0 2 2 0;
+}
+
+#entry {
+    background-color: @alternative-background;
+    padding: 3px;
+    border: 1 0 1 1;
+    border-radius: 2 0 0 2;
+    border-color: @alternative-border;
+}
+
+#prompt {
+    padding: 3 7 3 0; 
+}
